@@ -47,6 +47,15 @@ WHERE customer_id IN (
 );
 
 
+/*Find the most popular menu item (ordered the most) */
+
+
+SELECT mi.item_name, COUNT(oi.order_item_id) AS times_ordered
+FROM Order_Item oi
+JOIN Menu_Item mi ON oi.item_id = mi.item_id
+GROUP BY mi.item_name
+ORDER BY times_ordered DESC
+LIMIT 1;
 
 
 
